@@ -1,0 +1,1 @@
+react state ko turant update nai krta, function completion hone ke baad apne hisaab se update krta hae.
