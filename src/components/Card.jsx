@@ -1,21 +1,19 @@
-import React, { useState } from "react";
-import { FaArrowRightLong } from "react-icons/fa6";
+import React from "react";
 
-function Card() {
+export default function Card({ index, name, profession, image, handleClick, friends}) {
 
-  const [val, setVal] = useState(false);
-  
   return (
-    <div className="w-full h-screen bg-zinc-300 flex justify-center items-center">
-      <div className="relative w-60 h-32 bg-zinc-500 rounded-md flex overflow-hidden">
-        <img className={`shrink-0 transition-transform duration-700 ease-in-out ${val==false ? "-translate-x-[0%]" : "-translate-x-[100%]"} w-full h-full object-cover`} src="https://images.unsplash.com/photo-1715604723666-866e18a5d257?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-        <img className={`shrink-0 transition-transform duration-700 ease-in-out ${val==false ? "-translate-x-[0%]" : "-translate-x-[100%]"} w-full h-full object-cover`} src="https://images.unsplash.com/photo-1715514918422-3bde21134880?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMzJ8fHxlbnwwfHx8fHw%3D" alt="" />
-        <span onClick={()=>setVal(()=>!val)} className="w-8 h-8 flex items-center justify-center bg-[#dadada7b] rounded-full absolute bottom-[0%] left-1/2 -translate-x-[50%] -translate-y-[50%]">
-        <FaArrowRightLong size={".8em"}/>
-        </span>
+    <div className="w-52 bg-white rounded-md overflow-hidden">
+      <div className="w-full h-32 bg-sky-200">
+         <img className="w-full h-full object-cover" src={image} alt="" />
+      </div>
+      <div className="w-full p-3">
+        <h3 className="text-xl font-semibold">{name}</h3>
+        <h5 className="text-xs">{profession}</h5>
+        <button onClick={()=>handleClick(index)} className={`px-3 py-1 text-xs text-white ${friends == false ? "bg-blue-500" : "bg-green-500"} font-semibold rounded-md mt-3`}>
+          {friends == false ? "Add friend" : "Friends"}
+        </button>
       </div>
     </div>
   );
 }
-
-export default Card;
